@@ -64,7 +64,7 @@ try:
         draw.text((x, top+16),    "Stopping camera",  font=font, fill=255)
         picam.close()
         draw.text((x, top+25),    "Success :)",  font=font, fill=255)
-except expression as identifier:
+except:
     draw.rectangle((0,0,width,height), outline=0, fill=0)
     # Write two lines of text.
     draw.text((x, top),       "Error with camera",  font=font, fill=255)
