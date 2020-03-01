@@ -69,15 +69,6 @@ except:
     # Write two lines of text.
     draw.text((x, top),       "Error with camera",  font=font, fill=255)
 
-# Draw a black filled box to clear the image.
-draw.rectangle((0,0,width,height), outline=0, fill=0)
-
-# Write two lines of text.
-draw.text((x, top),       "Hola mundo...",  font=font, fill=255)
-draw.text((x, top+8),     "Testeando display", font=font, fill=255)
-draw.text((x, top+16),    "Aquí va el txt de ASL",  font=font, fill=255)
-draw.text((x, top+25),    "vamos a probar la picam",  font=font, fill=255)
-
 # Display image.
 disp.image(image)
 disp.display()
