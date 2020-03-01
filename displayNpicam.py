@@ -1,5 +1,7 @@
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
+import time
+import picamera
 
 from PIL import Image
 from PIL import ImageDraw
@@ -47,6 +49,25 @@ font = ImageFont.load_default()
 # Alternatively load a TTF font.  Make sure the .ttf font file is in the same directory as the python script!
 # Some other nice fonts to try: http://www.dafont.com/bitmap.php
 # font = ImageFont.truetype('Minecraftia2.ttf', 8)
+
+try:
+    with picamera.PiCamera() as picam:
+    picam.start_preview()
+    # Draw a black filled box to clear the image.
+    draw.rectangle((0,0,width,height), outline=0, fill=0)
+    # Write two lines of text.
+    draw.text((x, top),       "Initializing cam...",  font=font, fill=255)
+    time.sleep(5)
+    picam.capture('nombre.jpg')
+    draw.text((x, top+8),     "nombre.jpg captured", font=font, fill=255)
+    picam.stop_preview()
+    draw.text((x, top+16),    "Stopping camera",  font=font, fill=255)
+    picam.close()
+    draw.text((x, top+25),    "Success :)",  font=font, fill=255)
+except expression as identifier:
+    draw.rectangle((0,0,width,height), outline=0, fill=0)
+    # Write two lines of text.
+    draw.text((x, top),       "Error with camera",  font=font, fill=255)
 
 # Draw a black filled box to clear the image.
 draw.rectangle((0,0,width,height), outline=0, fill=0)
